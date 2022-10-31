@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="sanja (generated)" id="1667153555535-1">
+        <createSequence sequenceName="order_detail_order_detail_id_seq"/>
+    </changeSet>
+    <changeSet author="sanja (generated)" id="1667153555535-2">
+        <createSequence sequenceName="orders_order_id_seq"/>
+    </changeSet>
+    <changeSet author="sanja (generated)" id="1667153555535-3">
+        <createTable tableName="order_detail">
+            <column autoIncrement="true" name="order_detail_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="order_detail_pkey"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="creation_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="notes" type="VARCHAR(255)"/>
+            <column name="product_id" type="BIGINT"/>
+            <column name="quantity" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_id" type="BIGINT"/>
+            <column name="is_active" type="BOOL"/>
+            <column name="tenant" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanja (generated)" id="1667153555535-4">
+        <createTable tableName="orders">
+            <column autoIncrement="true" name="order_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="orders_pkey"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="creation_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="last_modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="order_status" type="VARCHAR(255)"/>
+            <column name="order_time" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="store_id" type="BIGINT"/>
+            <column name="is_active" type="BOOL"/>
+            <column name="tenant" type="VARCHAR(255)"/>
+            <column name="queue_number" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanja (generated)" id="1667153555535-5">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="order_detail" constraintName="fkrws2q0si6oyd6il8gqe2aennc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="order_id" referencedTableName="orders"/>
+    </changeSet>
+    <changeSet author="sanja" id="1667153555535-6">
+		<insert tableName="orders">
+			<column name="customer_id" value="1" />
+			<column name="store_id" value="1" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_status" value="WAITING" />
+			<column name="is_active" value="true" />
+			<column name="queue_number" value="1" />
+			<column name="order_time" value="2022-10-31T09:28:18.540+00:00" />
+		</insert>
+		<insert tableName="orders">
+			<column name="customer_id" value="2" />
+			<column name="store_id" value="1" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_status" value="IN_QUEUE" />
+			<column name="is_active" value="true" />
+			<column name="queue_number" value="1" />
+			<column name="order_time" value="2022-10-31T09:28:18.540+00:00" />
+		</insert>
+		<insert tableName="orders">
+			<column name="customer_id" value="2" />
+			<column name="store_id" value="1" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_status" value="PREPARING" />
+			<column name="is_active" value="true" />
+			<column name="queue_number" value="1" />
+			<column name="order_time" value="2022-10-31T09:28:18.540+00:00" />
+		</insert>
+		<insert tableName="orders">
+			<column name="customer_id" value="1" />
+			<column name="store_id" value="2" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_status" value="PREPARING" />
+			<column name="is_active" value="true" />
+			<column name="queue_number" value="1" />
+			<column name="order_time" value="2022-10-31T09:28:18.540+00:00" />
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="1" />			
+			<column name="notes" value="do not add sugar"/>
+            <column name="product_id" value="4"/>
+            <column name="quantity" value="4"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="1" />			
+			<column name="notes" value=""/>
+            <column name="product_id" value="3"/>
+            <column name="quantity" value="3"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="2" />			
+			<column name="notes" value="do not add milk"/>
+            <column name="product_id" value="5"/>
+            <column name="quantity" value="1"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="2" />			
+			<column name="notes" value=""/>
+            <column name="product_id" value="6"/>
+            <column name="quantity" value="3"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="3" />			
+			<column name="notes" value="add extra sugar"/>
+            <column name="product_id" value="6"/>
+            <column name="quantity" value="1"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="3" />			
+			<column name="notes" value=""/>
+            <column name="product_id" value="7"/>
+            <column name="quantity" value="2"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="4" />			
+			<column name="notes" value=""/>
+            <column name="product_id" value="10"/>
+            <column name="quantity" value="1"/>
+		</insert>
+		<insert tableName="order_detail">
+			<column name="is_active" value="true" />
+			<column name="tenant" value="cbtl" />
+			<column name="order_id" value="4" />			
+			<column name="notes" value=""/>
+            <column name="product_id" value="17"/>
+            <column name="quantity" value="2"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>

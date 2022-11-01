@@ -53,5 +53,5 @@ public class OrderConfigurations {
         resolver.setDefaultLocale(Locale.US);
         return resolver;
     }
-	
+    	
 }

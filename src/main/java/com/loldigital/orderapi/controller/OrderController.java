@@ -46,11 +46,6 @@ public class OrderController {
 	@Autowired
 	IOrderDetailRepository orderDetailRepo;
 
-	@GetMapping("/hello")
-	public String test() {
-		return "Hello ALT Health User";
-	}
-
 	@PostMapping("/orders")
 	public OrderDTO createOrder(@RequestParam String tenant, @RequestBody OrderDTO orderDTO) {
 		try {

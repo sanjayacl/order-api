@@ -6,3 +6,5 @@
 # then change directory to target and run the application as below by passing the db crendtials
 
    'java -jar order-api-0.0.1-SNAPSHOT.jar --spring.datasource.username=postgres --spring.datasource.password=admin'
+   
+# Swagger API documentation is available at http://localhost:8084/swagger-ui.html
